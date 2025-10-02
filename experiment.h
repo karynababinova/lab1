@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
-#include <Board.h>
-#include <RandomCell.h>
+#include "Board.h"
+#include "RandomCell.h"
 
 using namespace std;
 
