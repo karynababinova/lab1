@@ -1,18 +1,14 @@
 #include <iostream>
 #include <vector>
 #include "experiment.h"
-#include "Board.h"
-#include "RandomCell.h"
 #include "calculations.h"
 
 using namespace std;
 
-vector <int> singleExperiment(int n, int m){
-	Board board(n);
-	RandomCell rc(n);
+vector <int> singleExperiment(int n, int m, Board& board, RandomCell& rc){
 	for (int t = 0; t < m; t++) {
-		auto [x, y] = rc();
-		board.incrementCell(x, y);
+		pair<int, int> xy = rc();
+		board.incrementCell(xy);
 	}
 	return board.getAllMultiplicities();
 }
@@ -32,9 +28,11 @@ double averageInVector(const vector<double>& v) {
 pair <double, double> multipleExperiments(int n, int m, int repeat) {
 	vector <double> avgs, meds;
 	for (int i = 0; i < repeat; i++) {
-		vector<int> cells = singleExperiment(n, m);
-		avgs.push_back(average(cells));
-		meds.push_back(median(cells));
+		Board board(n);
+		RandomCell rc(n);
+		vector<int> cells = singleExperiment(n, m, board, rc);
+		avgs.push_back(average(board));
+		meds.push_back(median(board));
 	}
 	double avg_avg = 0, med_avg = 0;
 	avg_avg = averageInVector(avgs);
