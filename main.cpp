@@ -1,6 +1,5 @@
 #include <iostream>
-#include <stdexcept>
-#include <utility>
+#include <vector>
 #include "Board.h"
 #include "calculations.h"
 #include "RandomCell.h"
@@ -8,30 +7,12 @@
 
 using namespace std;
 
-int readInt() {
-    int value;
-    cin >> value;
-    if (cin.fail()) {
-        throw invalid_argument("Error: expected an integer");
-    }
-    return value;
-}
-
 void input(int& n, int& m) {
     cout << "Enter board size (n): ";
-    n = readInt();
-    if (n <= 0) {
-        throw out_of_range("Board size n must be greater than 0");
-    }
+    cin >> n;
 
     cout << "Enter the amount of cells to choose (m): ";
-    m = readInt();
-    if (m <= 0) {
-        throw out_of_range("The number of chosen cells must be greater than 0");
-    }
-    if (m > n * n) {
-        throw out_of_range("The number of chosen cells must not be greater than the total amount of cells");
-    }
+    cin >> m;
 }
 
 void output(double average, double median) {
@@ -47,11 +28,9 @@ void chooseCells(int m, RandomCell& rc, Board& board) {
 }
 
 void startExperiment(int n, int m) {
+    int reps;
     cout << "Enter the amount of repetitions for the experiment: ";
-    int reps = readInt();
-    if (reps <= 0) {
-        throw out_of_range("The number of repetitions must be greater than 0");
-    }
+    cin >> reps;
 
     experiment(n, m, reps);
 }
