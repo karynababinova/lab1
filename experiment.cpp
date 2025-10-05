@@ -60,7 +60,7 @@ void checkRandomness(int n, int m) {
         for (int i = 0; i < 5; i++)
             cout << counts[i] << " ";
         cout << "... ";
-        for (int i = counts.size() - 5; i < counts.size(); i++)
+        for (size_t i = counts.size() - 5; i < counts.size(); i++)
             cout << counts[i] << " ";
     }
     cout << endl;

@@ -23,15 +23,15 @@ double median(const Board& board) {
 
     std::sort(allMultiplicities.begin(), allMultiplicities.end());
 
-    int n = allMultiplicities.size();
-    int middle = n / 2;
+    size_t n = allMultiplicities.size();
+    size_t middle = n / 2;
 
     if (n % 2 != 0) {
         return allMultiplicities[middle];
     }
     else {
-        int leftMiddle = middle - 1;
-        int rightMiddle = middle;
+        size_t leftMiddle = middle - 1;
+        size_t rightMiddle = middle;
         return (allMultiplicities[leftMiddle] + allMultiplicities[rightMiddle]) / 2.0;
     }
 }
