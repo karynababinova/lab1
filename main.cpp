@@ -1,3 +1,5 @@
+// Compiler: MSVC 19.43.34809
+
 #include <iostream>
 #include <stdexcept>
 #include <utility>
